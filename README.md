@@ -101,7 +101,7 @@ As the user answers each question, a dynamic side widget recalculates tax liabil
 
 ```bash
 # 1. Navigate to project folder
-cd "d:/Traffic God"
+cd "d:/Taxmitra.ai"
 
 # 2. Install dependencies
 npm install
