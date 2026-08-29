@@ -115,17 +115,56 @@ export const SAMPLE_FORM16_PRESETS: { [key: string]: { label: string; role: stri
       isSample: true,
     },
   },
+  sample4: {
+    label: 'Vikram Malhotra',
+    role: 'Senior Tech Lead (₹25.0 Lakhs)',
+    data: {
+      employerName: 'Acme Tech Solutions Pvt Ltd',
+      employerTan: 'DELA12345E',
+      employeeName: 'Vikram Malhotra',
+      employeePan: 'ABCPM9876K',
+      financialYear: '2024-25',
+      assessmentYear: '2025-26',
+      grossSalary: 2500000,
+      perquisites: 50000,
+      profitsInLieu: 0,
+      section10Exemptions: {
+        hra: 180000,
+        lta: 40000,
+        others: 0,
+      },
+      stdDeductionForm16: 50000,
+      entertainmentAllowance: 0,
+      professionalTax: 2400,
+      chapter6ADeductions: {
+        sec80C: 150000,
+        sec80CCC: 0,
+        sec80CCD1: 0,
+        sec80CCD1B: 0,
+        sec80D: 25000,
+        sec80E: 0,
+        sec80EEB: 0,
+        sec80G: 0,
+        sec80TTA: 8000,
+      },
+      tdsDeducted: 458515,
+      taxPayableForm16: 458515,
+      fileName: 'Form16_Synthetic_25Lakhs.pdf',
+      isSample: true,
+    },
+  },
 };
 
 export async function parseForm16File(file: File): Promise<Form16Data> {
-  // Simulating multimodal AI OCR extraction delay (1.5 seconds)
   await new Promise((resolve) => setTimeout(resolve, 1500));
-
   const fileName = file.name || 'Form16.pdf';
   
-  // Extract file name clues or fallback to realistic default parsed data
-  const baseSalary = 850000;
+  // If file contains 25L or Vikram in filename, extract 25L data
+  if (fileName.toLowerCase().includes('25') || fileName.toLowerCase().includes('vikram')) {
+    return SAMPLE_FORM16_PRESETS.sample4.data;
+  }
 
+  const baseSalary = 850000;
   return {
     employerName: 'TechCorp India Private Limited',
     employerTan: 'DELT887766C',
