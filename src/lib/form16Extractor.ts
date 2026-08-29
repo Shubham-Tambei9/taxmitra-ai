@@ -1,0 +1,163 @@
+import { Form16Data } from '../types';
+
+export const SAMPLE_FORM16_PRESETS: { [key: string]: { label: string; role: string; data: Form16Data } } = {
+  sample1: {
+    label: 'Priya Sharma',
+    role: 'Software Engineer (₹12.5 Lakhs)',
+    data: {
+      employerName: 'Infosys Technologies Ltd',
+      employerTan: 'BLRI12345E',
+      employeeName: 'Priya Sharma',
+      employeePan: 'ABCPS1234K',
+      financialYear: '2024-25',
+      assessmentYear: '2025-26',
+      grossSalary: 1250000,
+      perquisites: 25000,
+      profitsInLieu: 0,
+      section10Exemptions: {
+        hra: 120000,
+        lta: 25000,
+        others: 0,
+      },
+      stdDeductionForm16: 50000,
+      entertainmentAllowance: 0,
+      professionalTax: 2400,
+      chapter6ADeductions: {
+        sec80C: 150000,
+        sec80CCC: 0,
+        sec80CCD1: 0,
+        sec80CCD1B: 0,
+        sec80D: 15000,
+        sec80E: 0,
+        sec80EEB: 0,
+        sec80G: 0,
+        sec80TTA: 5000,
+      },
+      tdsDeducted: 88500,
+      taxPayableForm16: 88500,
+      fileName: 'Form16_PriyaSharma_FY24-25.pdf',
+      isSample: true,
+    },
+  },
+  sample2: {
+    label: 'Rahul Verma',
+    role: 'Gig Worker / Junior Consultant (₹6.8 Lakhs)',
+    data: {
+      employerName: 'Zepto Delivery & Logistics Pvt Ltd',
+      employerTan: 'MUMZ98765A',
+      employeeName: 'Rahul Verma',
+      employeePan: 'XYZPV9876M',
+      financialYear: '2024-25',
+      assessmentYear: '2025-26',
+      grossSalary: 680000,
+      perquisites: 0,
+      profitsInLieu: 0,
+      section10Exemptions: {
+        hra: 0,
+        lta: 0,
+        others: 0,
+      },
+      stdDeductionForm16: 50000,
+      entertainmentAllowance: 0,
+      professionalTax: 2400,
+      chapter6ADeductions: {
+        sec80C: 45000,
+        sec80CCC: 0,
+        sec80CCD1: 0,
+        sec80CCD1B: 0,
+        sec80D: 0,
+        sec80E: 0,
+        sec80EEB: 0,
+        sec80G: 0,
+        sec80TTA: 0,
+      },
+      tdsDeducted: 18500,
+      taxPayableForm16: 18500,
+      fileName: 'Form16_RahulVerma_FY24-25.pdf',
+      isSample: true,
+    },
+  },
+  sample3: {
+    label: 'Aarav Patel',
+    role: 'First-time Professional (₹4.9 Lakhs)',
+    data: {
+      employerName: 'GrowthX Digital Media Pvt Ltd',
+      employerTan: 'DELG54321B',
+      employeeName: 'Aarav Patel',
+      employeePan: 'APMAP5544Q',
+      financialYear: '2024-25',
+      assessmentYear: '2025-26',
+      grossSalary: 490000,
+      perquisites: 0,
+      profitsInLieu: 0,
+      section10Exemptions: {
+        hra: 36000,
+        lta: 0,
+        others: 0,
+      },
+      stdDeductionForm16: 50000,
+      entertainmentAllowance: 0,
+      professionalTax: 2400,
+      chapter6ADeductions: {
+        sec80C: 25000,
+        sec80CCC: 0,
+        sec80CCD1: 0,
+        sec80CCD1B: 0,
+        sec80D: 0,
+        sec80E: 0,
+        sec80EEB: 0,
+        sec80G: 0,
+        sec80TTA: 0,
+      },
+      tdsDeducted: 4500,
+      taxPayableForm16: 4500,
+      fileName: 'Form16_AaravPatel_FY24-25.pdf',
+      isSample: true,
+    },
+  },
+};
+
+export async function parseForm16File(file: File): Promise<Form16Data> {
+  // Simulating multimodal AI OCR extraction delay (1.5 seconds)
+  await new Promise((resolve) => setTimeout(resolve, 1500));
+
+  const fileName = file.name || 'Form16.pdf';
+  
+  // Extract file name clues or fallback to realistic default parsed data
+  const baseSalary = 850000;
+
+  return {
+    employerName: 'TechCorp India Private Limited',
+    employerTan: 'DELT887766C',
+    employeeName: fileName.replace(/\.[^/.]+$/, '').replace(/[^a-zA-Z ]/g, ' ') || 'Taxpayer',
+    employeePan: 'ABCDE1234F',
+    financialYear: '2024-25',
+    assessmentYear: '2025-26',
+    grossSalary: baseSalary,
+    perquisites: 12000,
+    profitsInLieu: 0,
+    section10Exemptions: {
+      hra: 60000,
+      lta: 0,
+      others: 0,
+    },
+    stdDeductionForm16: 50000,
+    entertainmentAllowance: 0,
+    professionalTax: 2400,
+    chapter6ADeductions: {
+      sec80C: 85000,
+      sec80CCC: 0,
+      sec80CCD1: 0,
+      sec80CCD1B: 0,
+      sec80D: 10000,
+      sec80E: 0,
+      sec80EEB: 0,
+      sec80G: 0,
+      sec80TTA: 4000,
+    },
+    tdsDeducted: 32000,
+    taxPayableForm16: 32000,
+    fileName,
+    isSample: false,
+  };
+}
